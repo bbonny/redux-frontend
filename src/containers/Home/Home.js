@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import config from '../../config';
+import {SelectorForm} from 'components';
 import Helmet from 'react-helmet';
 
 export default class Home extends Component {
@@ -15,6 +16,7 @@ export default class Home extends Component {
           </div>
         </div>
         <div className="container">
+          <SelectorForm/>
         </div>
         <div className="well text-center">
           Have questions? Ask for help.

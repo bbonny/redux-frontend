@@ -34,25 +34,25 @@ class SelectorForm extends Component {
         <form className="form-horizontal" onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="cover" className="col-sm-4">1. Cover</label>
-            <div className="col-sm-8">
+            <div className="col-sm-2">
               <input type="checkbox" id="cover" {...cover}/>
             </div>
           </div>
           <div className="form-group">
             <label htmlFor="team" className="col-sm-4">2. Who we are?</label>
-            <div className="col-sm-8">
+            <div className="col-sm-2">
               <input type="checkbox" id="team" {...team}/>
             </div>
           </div>
           <div className="form-group">
             <label htmlFor="benefits" className="col-sm-4">3. What we help you do and what your benefits are?</label>
-            <div className="col-sm-8">
+            <div className="col-sm-2">
               <input type="checkbox" id="benefits" {...benefits}/>
             </div>
           </div>
           <div className="form-group">
             <label htmlFor="thanks" className="col-sm-4">4. Thank you & legal mentions</label>
-            <div className="col-sm-8">
+            <div className="col-sm-2">
               <input type="checkbox" id="thanks" {...thanks}/>
             </div>
           </div>

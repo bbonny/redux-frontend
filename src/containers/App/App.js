@@ -4,6 +4,13 @@ import { isLoaded as isInfoLoaded, load as loadInfo } from 'redux/modules/info';
 import { isLoaded as isAuthLoaded, load as loadAuth, logout } from 'redux/modules/auth';
 import { routeActions } from 'react-router-redux';
 import { asyncConnect } from 'redux-async-connect';
+import { IndexLink } from 'react-router';
+import config from '../../config';
+import Nav from 'react-bootstrap/lib/Nav';
+import Navbar from 'react-bootstrap/lib/Navbar';
+import NavDropdown from 'react-bootstrap/lib/NavDropdown';
+import MenuItem from 'react-bootstrap/lib/MenuItem';
+import Helmet from 'react-helmet';
 
 @asyncConnect([{
   promise: ({store: {dispatch, getState}}) => {
@@ -54,6 +61,34 @@ export default class App extends Component {
 
     return (
       <div className={styles.app}>
+        <Helmet {...config.app.head}/>
+        <Navbar fixedTop>
+          <Navbar.Header>
+            <Navbar.Brand>
+              <IndexLink to="/" activeStyle={{color: '#ffffff'}}>
+                <div className={styles.brand}/>
+                <span>{config.app.title}</span>
+              </IndexLink>
+            </Navbar.Brand>
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav>
+              <NavDropdown title="Mode" id="nav-dropdown">
+                <MenuItem>
+                   <IndexLink to="/">
+                     Sales Mode
+                   </IndexLink>
+                </MenuItem>
+                <MenuItem>
+                  <IndexLink to="/marketing">
+                     Marketing Mode
+                   </IndexLink>
+                </MenuItem>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+
         <div className={styles.appContent}>
           {this.props.children}
         </div>

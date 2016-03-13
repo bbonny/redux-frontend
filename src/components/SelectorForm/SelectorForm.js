@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
+import {DownloadButton} from 'components';
 
 @reduxForm({
   form: 'selector',
@@ -9,14 +10,24 @@ export default
 class SelectorForm extends Component {
   static propTypes = {
     fields: PropTypes.object.isRequired,
-    handleSubmit: PropTypes.func.isRequired
+    showDownloadButton: PropTypes.bool,
+    handleSubmit: PropTypes.func.isRequired,
+    merging: PropTypes.bool,
+    errorMessage: PropTypes.object
   }
 
   render() {
     const {
       fields: {cover, team, benefits, thanks},
-      handleSubmit
-      } = this.props;
+      handleSubmit,
+      merging,
+      showDownloadButton,
+      errorMessage,
+    } = this.props;
+    let refreshClassName = 'fa fa-refresh';
+    if (merging) {
+      refreshClassName += ' fa-spin';
+    }
     return (
       <div>
         <h2>Which parts do you want to include in your presentations?</h2>
@@ -47,9 +58,16 @@ class SelectorForm extends Component {
           </div>
           <div className="form-group">
             <div className="col-sm-10">
-              <button className="btn btn-success" onClick={handleSubmit}>
-                <i className="fa fa-paper-plane"/> Generate
+              <button className={'btn btn-success'} onClick={handleSubmit}>
+                <i className={refreshClassName} /> Generate
               </button>
+              &nbsp;
+              {showDownloadButton &&
+                <DownloadButton path="/apoffice/files/temp/merged.pptx"/>
+              }
+              {errorMessage.message &&
+                <div className={'text-danger'}>{errorMessage.message}</div>
+              }
             </div>
           </div>
         </form>

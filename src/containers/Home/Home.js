@@ -6,11 +6,17 @@ import Helmet from 'react-helmet';
 import * as slidesActions from 'redux/modules/slides';
 
 @connect(
-  state => ({merged: state.slides.merged}),
+  state => ({
+    merged: state.slides.merged,
+    merging: state.slides.merging,
+    error: state.slides.error
+  }),
   slidesActions)
 export default class Home extends Component {
   static propTypes = {
     merged: PropTypes.bool,
+    merging: PropTypes.bool,
+    error: PropTypes.object,
     merge: PropTypes.func
   }
 
@@ -66,7 +72,12 @@ export default class Home extends Component {
           </div>
         </div>
         <div className="container">
-          <SelectorForm onSubmit={this.handleSubmit}/>
+          <SelectorForm
+            onSubmit={this.handleSubmit}
+            showDownloadButton={this.props.merged}
+            merging={this.props.merging}
+            errorMessage={this.props.error}
+           />
         </div>
         <div className="well text-center">
           Have questions? Ask for help.

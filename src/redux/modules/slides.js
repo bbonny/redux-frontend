@@ -3,21 +3,27 @@ const MERGE_SUCCESS = 'redux-example/slides/MERGE_SUCCESS';
 const MERGE_FAIL = 'redux-example/slides/MERGE_FAIL';
 
 const initialState = {
-  merged: false
+  merging: false,
+  merged: false,
+  error: {},
 };
 
 export default function reducer(state = initialState, action = {}) {
+  console.log(action.error);
   switch (action.type) {
     case MERGE:
       return {
         ...state,
-        merging: true
+        merging: true,
+        merged: false,
+        error: {}
       };
     case MERGE_SUCCESS:
       return {
         ...state,
         merging: false,
         merged: true,
+        error: {}
       };
     case MERGE_FAIL:
       return {
@@ -29,10 +35,6 @@ export default function reducer(state = initialState, action = {}) {
     default:
       return state;
   }
-}
-
-export function isMerged(globalState) {
-  return globalState.slides && globalState.slides.merged;
 }
 
 export function merge(data) {

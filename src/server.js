@@ -11,7 +11,7 @@ import ApiClient from './helpers/ApiClient';
 import Html from './helpers/Html';
 import PrettyError from 'pretty-error';
 import http from 'http';
-
+import request from 'request';
 import { match } from 'react-router';
 import { ReduxAsyncConnect, loadOnServer } from 'redux-async-connect';
 import createHistory from 'react-router/lib/createMemoryHistory';
@@ -19,9 +19,12 @@ import {Provider} from 'react-redux';
 import getRoutes from './routes';
 
 const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
+const apofficeUrl = 'http://' + config.apofficeHost;
+
 const pretty = new PrettyError();
 const app = new Express();
 const server = new http.Server(app);
+
 const proxy = httpProxy.createProxyServer({
   target: targetUrl,
   ws: true
@@ -32,9 +35,15 @@ app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 
 app.use(Express.static(path.join(__dirname, '..', 'static')));
 
-// Proxy to API server
+// Proxy to local API server
 app.use('/api', (req, res) => {
   proxy.web(req, res, {target: targetUrl});
+});
+
+// Proxy to apoffice API server
+app.use('/apoffice', function(req, res) {
+  var url = apofficeUrl + req.url;
+  req.pipe(request(url)).pipe(res);
 });
 
 app.use('/ws', (req, res) => {

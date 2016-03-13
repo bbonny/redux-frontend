@@ -14,6 +14,7 @@ module.exports = Object.assign({
   port: process.env.PORT,
   apiHost: process.env.APIHOST || 'localhost',
   apiPort: process.env.APIPORT,
+  apofficeHost: process.env.APOFFICEHOST || 'apoffice-integration.azurewebsites.net/api',
   app: {
     title: 'STAK app says hello',
     description: 'A pptx presentation in the blink of an eye !',

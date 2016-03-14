@@ -63,7 +63,7 @@ export default class UserPage extends Component {
     const styles = require('./UserPage.scss');
     return (
       <div className={styles.home}>
-        <Helmet title="Sales mode"/>
+        <Helmet title="User Mode"/>
         <div className="container">
           <SelectorForm
             onSubmit={this.handleSubmit}

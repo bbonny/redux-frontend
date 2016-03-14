@@ -65,7 +65,7 @@ export default class App extends Component {
         <Navbar fixedTop>
           <Navbar.Header>
             <Navbar.Brand>
-              <IndexLink to="/user" activeStyle={{color: '#ffffff'}}>
+              <IndexLink to="/" activeStyle={{color: '#ffffff'}}>
                 <div className={styles.brand}/>
                 <span>{config.app.title}</span>
               </IndexLink>
@@ -75,7 +75,7 @@ export default class App extends Component {
             <Nav pullRight>
               <NavDropdown title="Mode" id="nav-dropdown">
                 <MenuItem>
-                   <IndexLink to="/user">
+                   <IndexLink to="/">
                      User Mode
                    </IndexLink>
                 </MenuItem>

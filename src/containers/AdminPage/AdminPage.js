@@ -17,7 +17,6 @@ export default class AdminPage extends Component {
   }
 
   onDrop = (files) => {
-    console.log('Received files: ', files[0]);
     this.props.upload(files[0]);
   }
 

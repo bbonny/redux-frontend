@@ -1,6 +1,5 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import config from '../../config';
 import {SelectorForm} from 'components';
 import Helmet from 'react-helmet';
 import * as slidesActions from 'redux/modules/slides';
@@ -12,7 +11,7 @@ import * as slidesActions from 'redux/modules/slides';
     error: state.slides.error
   }),
   slidesActions)
-export default class Home extends Component {
+export default class UserPage extends Component {
   static propTypes = {
     merged: PropTypes.bool,
     merging: PropTypes.bool,
@@ -35,7 +34,7 @@ export default class Home extends Component {
       benefits: {
         path: 'demo/3._STACK_what_we_help_you_do_&_what_your_benefits_are.pptx',
         start: 0,
-        count: 1
+        count: 2
       },
       thanks: {
         path: 'demo/4._STACK_thank_you_&_legal_mentions.pptx',
@@ -61,16 +60,10 @@ export default class Home extends Component {
   }
 
   render() {
-    const styles = require('./Home.scss');
+    const styles = require('./UserPage.scss');
     return (
       <div className={styles.home}>
-        <Helmet title="Home"/>
-        <div className={styles.masthead}>
-          <div className="container">
-            <h1>{config.app.title}</h1>
-            <h2>{config.app.description}</h2>
-          </div>
-        </div>
+        <Helmet title="Sales mode"/>
         <div className="container">
           <SelectorForm
             onSubmit={this.handleSubmit}
@@ -78,9 +71,6 @@ export default class Home extends Component {
             merging={this.props.merging}
             errorMessage={this.props.error}
            />
-        </div>
-        <div className="well text-center">
-          Have questions? Ask for help.
         </div>
       </div>
     );

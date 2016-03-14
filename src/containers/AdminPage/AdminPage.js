@@ -11,7 +11,7 @@ import * as filesActions from 'redux/modules/files';
     error: state.files.error
   }),
   filesActions)
-export default class MarketingHome extends Component {
+export default class AdminPage extends Component {
   static propTypes = {
     upload: PropTypes.func
   }
@@ -22,11 +22,11 @@ export default class MarketingHome extends Component {
   }
 
   render() {
-    const styles = require('./MarketingHome.scss');
+    const styles = require('./AdminPage.scss');
 
     return (
       <div>
-        <Helmet title="Marketing mode"/>
+        <Helmet title="Admin Mode"/>
         <div className="container">
           <Dropzone onDrop={this.onDrop} multiple={false} className={styles.dropzone}>
             <div>Try dropping some files here, or click to select files to upload.</div>

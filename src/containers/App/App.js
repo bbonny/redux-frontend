@@ -65,23 +65,23 @@ export default class App extends Component {
         <Navbar fixedTop>
           <Navbar.Header>
             <Navbar.Brand>
-              <IndexLink to="/" activeStyle={{color: '#ffffff'}}>
+              <IndexLink to="/user" activeStyle={{color: '#ffffff'}}>
                 <div className={styles.brand}/>
                 <span>{config.app.title}</span>
               </IndexLink>
             </Navbar.Brand>
           </Navbar.Header>
           <Navbar.Collapse>
-            <Nav>
+            <Nav pullRight>
               <NavDropdown title="Mode" id="nav-dropdown">
                 <MenuItem>
-                   <IndexLink to="/">
-                     Sales Mode
+                   <IndexLink to="/user">
+                     User Mode
                    </IndexLink>
                 </MenuItem>
                 <MenuItem>
-                  <IndexLink to="/marketing">
-                     Marketing Mode
+                  <IndexLink to="/admin">
+                     Admin Mode
                    </IndexLink>
                 </MenuItem>
               </NavDropdown>

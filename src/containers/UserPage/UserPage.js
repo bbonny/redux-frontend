@@ -11,7 +11,7 @@ import * as slidesActions from 'redux/modules/slides';
     error: state.slides.error
   }),
   slidesActions)
-export default class SalesHome extends Component {
+export default class UserPage extends Component {
   static propTypes = {
     merged: PropTypes.bool,
     merging: PropTypes.bool,
@@ -60,7 +60,7 @@ export default class SalesHome extends Component {
   }
 
   render() {
-    const styles = require('./SalesHome.scss');
+    const styles = require('./UserPage.scss');
     return (
       <div className={styles.home}>
         <Helmet title="Sales mode"/>

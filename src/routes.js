@@ -2,8 +2,8 @@ import React from 'react';
 import {IndexRoute, Route} from 'react-router';
 import {
     App,
-    MarketingHome,
-    SalesHome,
+    AdminPage,
+    UserPage,
     NotFound,
   } from 'containers';
 
@@ -14,9 +14,9 @@ export default () => {
   return (
     <Route path="/" component={App}>
       { /* Home (main) route */ }
-      <IndexRoute component={SalesHome}/>
+      <IndexRoute component={UserPage}/>
 
-      <Route path="marketing" component={MarketingHome} />
+      <Route path="admin" component={AdminPage} />
 
       { /* Catch all route */ }
       <Route path="*" component={NotFound} status={404} />

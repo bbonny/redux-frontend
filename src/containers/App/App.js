@@ -34,22 +34,20 @@ export default class App extends Component {
               </IndexLink>
             </Navbar.Brand>
           </Navbar.Header>
-          <Navbar.Collapse>
-            <Nav pullRight>
-              <NavDropdown title="Mode" id="nav-dropdown">
-                <MenuItem>
-                   <IndexLink to="/">
-                     User Mode
-                   </IndexLink>
-                </MenuItem>
-                <MenuItem>
-                  <IndexLink to="/admin">
-                     Admin Mode
-                   </IndexLink>
-                </MenuItem>
-              </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
+          <Nav pullRight>
+            <NavDropdown title="Mode" id="nav-dropdown">
+              <MenuItem>
+                 <IndexLink to="/">
+                   User Mode
+                 </IndexLink>
+              </MenuItem>
+              <MenuItem>
+                <IndexLink to="/admin">
+                   Admin Mode
+                 </IndexLink>
+              </MenuItem>
+            </NavDropdown>
+          </Nav>
         </Navbar>
 
         <div className={styles.appContent}>

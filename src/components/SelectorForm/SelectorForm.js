@@ -22,7 +22,7 @@ class SelectorForm extends Component {
     slideSlices: PropTypes.array
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const {
       fields: {bricks},
       slideSlices

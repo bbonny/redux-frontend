@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { asyncConnect } from 'redux-async-connect';
 import { IndexLink } from 'react-router';
 import config from '../../config';
+import { LinkContainer } from 'react-router-bootstrap';
 import Nav from 'react-bootstrap/lib/Nav';
 import Navbar from 'react-bootstrap/lib/Navbar';
 import NavDropdown from 'react-bootstrap/lib/NavDropdown';
@@ -36,16 +37,12 @@ export default class App extends Component {
           </Navbar.Header>
           <Nav pullRight>
             <NavDropdown title="Mode" id="nav-dropdown">
-              <MenuItem>
-                 <IndexLink to="/">
-                   User Mode
-                 </IndexLink>
-              </MenuItem>
-              <MenuItem>
-                <IndexLink to="/admin">
-                   Admin Mode
-                 </IndexLink>
-              </MenuItem>
+              <LinkContainer to="/">
+                <MenuItem>User Mode</MenuItem>
+              </LinkContainer>
+              <LinkContainer to="/admin">
+                <MenuItem>Admin Mode</MenuItem>
+              </LinkContainer>
             </NavDropdown>
           </Nav>
         </Navbar>

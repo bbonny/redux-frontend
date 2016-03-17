@@ -30,7 +30,7 @@ class SelectorForm extends Component {
     slideSlices.forEach(function addSlice(slice) {
       bricks.addField({
         name: slice.name,
-        checked: false
+        checked: true
       });
     });
   }

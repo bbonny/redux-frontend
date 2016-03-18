@@ -4,6 +4,7 @@ import {BricksSelector, DownloadButton} from 'components';
 
 export const fields = [
   'bricks[].name',
+  'bricks[].column',
   'bricks[].checked'
 ];
 
@@ -30,7 +31,8 @@ class SelectorForm extends Component {
     slideSlices.forEach(function addSlice(slice) {
       bricks.addField({
         name: slice.name,
-        checked: true
+        checked: true,
+        column: slice.column
       });
     });
   }
@@ -53,9 +55,7 @@ class SelectorForm extends Component {
       <div>
         <h2>Which parts do you want to include in your presentations?</h2>
         <form className="form-horizontal" onSubmit={handleSubmit}>
-          {bricks.map((brick, index) => <div key={index}>
-            <BricksSelector {...brick}/>
-          </div>)}
+          <BricksSelector bricks={bricks}/>
           <div className="form-group">
             <div className="col-sm-10">
               <button className={'btn btn-success'} onClick={handleSubmit}>

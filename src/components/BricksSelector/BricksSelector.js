@@ -1,32 +1,32 @@
 import React, {Component, PropTypes} from 'react';
-import PureInput from '../PureInput/PureInput';
 import BricksColumn from './BricksColumn';
 
 export default class BricksSelector extends Component {
   static propTypes = {
-    bricks: PropTypes.object.isRequired
+    bricks: PropTypes.array.isRequired
   };
 
   getColumns = (bricks) => {
-    let result = {};
+    const result = [[], [], [], []];
     bricks.forEach((brick, index) => {
-      if (!result[brick.column.value]) {
-        result[brick.column.value] = []
-      }
-      result[brick.column.value].push(bricks[index])
+      result[brick.column.value].push(bricks[index]);
     });
     return result;
   }
 
   render() {
     const {bricks} = this.props;
-    console.log(bricks);
-    //columns = this.getColumns(bricks);
+    const columns = this.getColumns(bricks);
     return (
       <div>
-        {bricks.map((brick, index) => <div key={index}>
-          <BricksColumn name={brick.name} checked={brick.checked}/>
-        </div>)}
+        <div>
+          {columns.map((column, columnIndex) => <div key={columnIndex}>
+            {columnIndex}
+            {columns[columnIndex].map((brick, index) => <div key={index}>
+              <BricksColumn name={brick.name} checked={brick.checked}/>
+            </div>)}
+          </div>)}
+        </div>
       </div>
     );
   }

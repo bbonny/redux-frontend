@@ -22,9 +22,7 @@ export default class BricksSelector extends Component {
         <div>
           {columns.map((column, columnIndex) => <div key={columnIndex}>
             {columnIndex}
-            {columns[columnIndex].map((brick, index) => <div key={index}>
-              <BricksColumn name={brick.name} checked={brick.checked}/>
-            </div>)}
+            <BricksColumn bricks={columns[columnIndex]}/>
           </div>)}
         </div>
       </div>

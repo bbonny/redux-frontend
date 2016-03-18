@@ -3,18 +3,22 @@ import PureInput from '../PureInput/PureInput';
 
 export default class BricksColumn extends Component {
   static propTypes = {
-    name: PropTypes.object.isRequired,
-    checked: PropTypes.object.isRequired
+    bricks: PropTypes.array,
   };
 
   render() {
-    const {name, checked} = this.props;
+    const {bricks} = this.props;
+
     return (
-      <div className="form-group">
-        <label htmlFor="cover" className="col-sm-4">{name.value}</label>
-        <div className="col-sm-2">
-          <PureInput type="checkbox" placeholder="Brick" field={checked} />
-        </div>
+      <div>
+        {bricks.map((brick, index) => <div key={index}>
+          <div className="form-group">
+            <label htmlFor="cover" className="col-sm-4">{brick.name.value}</label>
+            <div className="col-sm-2">
+              <PureInput type="checkbox" placeholder="Brick" field={brick.checked} />
+            </div>
+          </div>
+        </div>)}
       </div>
     );
   }

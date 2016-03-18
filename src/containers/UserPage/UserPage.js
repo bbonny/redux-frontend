@@ -1,8 +1,38 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {SelectorForm} from 'components';
+import {fields} from '../../components/SelectorForm/SelectorForm';
+
 import Helmet from 'react-helmet';
 import * as slidesActions from 'redux/modules/slides';
+
+const slideSlices = [
+  {
+    name: 'Cover',
+    path: 'demo/1._STACK_cover.pptx',
+    start: 0,
+    count: 1
+  },
+  {
+    name: 'Team',
+    path: 'demo/2._STACK_who_we_are.pptx',
+    start: 0,
+    count: 1
+  },
+  {
+    name: 'Benefits',
+    path: 'demo/3._STACK_what_we_help_you_do_&_what_your_benefits_are.pptx',
+    start: 0,
+    count: 2
+  },
+  {
+    name: 'Thanks',
+    path: 'demo/4._STACK_thank_you_&_legal_mentions.pptx',
+    start: 0,
+    count: 1
+  }
+];
+
 
 @connect(
   state => ({
@@ -20,42 +50,19 @@ export default class UserPage extends Component {
   }
 
   transformFormData = (data) => {
-    const fileMapping = {
-      cover: {
-        path: 'demo/1._STACK_cover.pptx',
-        start: 0,
-        count: 1
-      },
-      team: {
-        path: 'demo/2._STACK_who_we_are.pptx',
-        start: 0,
-        count: 1
-      },
-      benefits: {
-        path: 'demo/3._STACK_what_we_help_you_do_&_what_your_benefits_are.pptx',
-        start: 0,
-        count: 2
-      },
-      thanks: {
-        path: 'demo/4._STACK_thank_you_&_legal_mentions.pptx',
-        start: 0,
-        count: 1
-      }
-    };
     const result = {
       outputPath: 'temp/merged.pptx',
       inputSlides: []
     };
-    ['cover', 'team', 'benefits', 'thanks'].forEach((slice) => {
-      if (data[slice]) {
-        result.inputSlides.push(fileMapping[slice]);
+    slideSlices.forEach((slice, index) => {
+      if (data.bricks[index].checked) {
+        result.inputSlides.push(slice);
       }
     });
     return result;
   }
 
   handleSubmit = (data) => {
-    console.log('Data submitted! ' + JSON.stringify(data));
     this.props.merge(this.transformFormData(data));
   }
 
@@ -66,10 +73,12 @@ export default class UserPage extends Component {
         <Helmet title="User Mode"/>
         <div className="container">
           <SelectorForm
+            fields={fields}
             onSubmit={this.handleSubmit}
             showDownloadButton={this.props.merged}
             merging={this.props.merging}
             errorMessage={this.props.error}
+            slideSlices={slideSlices}
            />
         </div>
       </div>

@@ -19,10 +19,12 @@ export default class BricksSelector extends Component {
     const columns = this.getColumns(bricks);
     return (
       <div>
-        <div>
+        <div className="row">
           {columns.map((column, columnIndex) => <div key={columnIndex}>
-            {columnIndex}
-            <BricksColumn bricks={columns[columnIndex]}/>
+            <fieldset className="col-xs-12 col-sm-3">
+              <legend>Column number: {columnIndex}</legend>
+              <BricksColumn bricks={columns[columnIndex]}/>
+            </fieldset>
           </div>)}
         </div>
       </div>

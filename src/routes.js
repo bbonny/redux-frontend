@@ -1,5 +1,5 @@
 import React from 'react';
-import {IndexRoute, Route} from 'react-router';
+import { Route } from 'react-router';
 import {
     App,
     AdminPage,
@@ -12,9 +12,9 @@ export default () => {
    * Please keep routes in alphabetical order
    */
   return (
-    <Route path="/" component={App}>
+    <Route component={App}>
       { /* Home (main) route */ }
-      <IndexRoute component={UserPage}/>
+      <Route path="/" component={UserPage}/>
 
       <Route path="admin" component={AdminPage} />
 

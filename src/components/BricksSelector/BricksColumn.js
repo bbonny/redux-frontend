@@ -15,7 +15,7 @@ export default class BricksColumn extends Component {
           <div className="form-group">
             <label htmlFor="cover" className="col-sm-4">{brick.name.value}</label>
             <div className="col-sm-2">
-              <PureInput type="checkbox" placeholder="Brick" field={brick.checked} />
+              <PureInput type="checkbox" field={brick.checked} />
             </div>
           </div>
         </div>)}

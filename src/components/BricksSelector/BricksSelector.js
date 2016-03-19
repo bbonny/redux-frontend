@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import BricksColumn from './BricksColumn';
+import { BricksColumn } from 'components';
 
 export default class BricksSelector extends Component {
   static propTypes = {
@@ -22,7 +22,7 @@ export default class BricksSelector extends Component {
         <div className="row">
           {columns.map((column, columnIndex) => <div key={columnIndex}>
             <fieldset className="col-xs-12 col-sm-3">
-              <legend>Column number: {columnIndex}</legend>
+              <legend>Column {columnIndex + 1}</legend>
               <BricksColumn bricks={columns[columnIndex]}/>
             </fieldset>
           </div>)}

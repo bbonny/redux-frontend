@@ -5,6 +5,7 @@
  *
  */
 
+export BricksColumn from './BricksSelector/BricksColumn';
 export BricksSelector from './BricksSelector/BricksSelector';
 export BricksCombinatorForm from './BricksCombinatorForm/BricksCombinatorForm';
 export DownloadButton from './DownloadButton/DownloadButton';

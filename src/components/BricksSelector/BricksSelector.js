@@ -7,11 +7,15 @@ export default class BricksSelector extends Component {
   };
 
   getColumns = (bricks) => {
-    const result = [[], [], [], []];
+    const columns = [];
     bricks.forEach((brick, index) => {
-      result[brick.column.value].push(bricks[index]);
+      if (columns[brick.column.value] === undefined) {
+        columns.push([]);
+      }
+      columns[brick.column.value].push(bricks[index]);
+      console.log(columns);
     });
-    return result;
+    return columns;
   }
 
   render() {

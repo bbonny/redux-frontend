@@ -6,7 +6,7 @@
  */
 
 export BricksSelector from './BricksSelector/BricksSelector';
+export BricksCombinatorForm from './BricksCombinatorForm/BricksCombinatorForm';
 export DownloadButton from './DownloadButton/DownloadButton';
 export NavigationBar from './NavigationBar/NavigationBar';
 export PureInput from './PureInput/PureInput';
-export SelectorForm from './SelectorForm/SelectorForm';

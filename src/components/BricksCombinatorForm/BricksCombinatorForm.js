@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
-import {BricksSelector, DownloadButton} from 'components';
+import {BricksSelector} from 'components';
 
 export const fields = [
   'bricks[].name',
@@ -12,13 +12,11 @@ export const fields = [
   fields
 })
 export default
-class SelectorForm extends Component {
+class BricksCombinatorForm extends Component {
   static propTypes = {
     fields: PropTypes.object.isRequired,
-    showDownloadButton: PropTypes.bool,
     handleSubmit: PropTypes.func.isRequired,
     merging: PropTypes.bool,
-    errorMessage: PropTypes.object,
     slideSlices: PropTypes.array
   }
 
@@ -30,7 +28,7 @@ class SelectorForm extends Component {
     slideSlices.forEach(function addSlice(slice) {
       bricks.addField({
         name: slice.name,
-        checked: true
+        checked: false,
       });
     });
   }
@@ -40,8 +38,6 @@ class SelectorForm extends Component {
       fields: {bricks},
       handleSubmit,
       merging,
-      showDownloadButton,
-      errorMessage,
     } = this.props;
 
     let refreshClassName = 'fa fa-refresh';
@@ -50,8 +46,6 @@ class SelectorForm extends Component {
     }
 
     return (
-      <div>
-        <h2>Which parts do you want to include in your presentations?</h2>
         <form className="form-horizontal" onSubmit={handleSubmit}>
           {bricks.map((brick, index) => <div key={index}>
             <BricksSelector {...brick}/>
@@ -61,17 +55,9 @@ class SelectorForm extends Component {
               <button className={'btn btn-success'} onClick={handleSubmit}>
                 <i className={refreshClassName} /> Generate
               </button>
-              &nbsp;
-              {showDownloadButton &&
-                <DownloadButton path="/apoffice/files/temp/merged.pptx"/>
-              }
-              {errorMessage.message &&
-                <div className={'text-danger'}>{errorMessage.message}</div>
-              }
             </div>
           </div>
         </form>
-      </div>
     );
   }
 }

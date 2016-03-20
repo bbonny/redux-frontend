@@ -18,8 +18,8 @@ import createHistory from 'react-router/lib/createMemoryHistory';
 import {Provider} from 'react-redux';
 import getRoutes from './routes';
 
-const targetUrl = 'http://' + config.apiHost + ':' + config.apiPort;
-const apofficeUrl = 'http://' + config.apofficeHost;
+const targetUrl = 'http://' + config.apiHosts.api + ':' + config.apiPorts.api;
+const apofficeUrl = 'http://' + config.apiHosts.apoffice;
 
 const pretty = new PrettyError();
 const app = new Express();

@@ -68,7 +68,6 @@ class SelectorForm extends Component {
               }
             </div>
           </div>
-          <h2>Which parts do you want to include in your presentations?</h2>
           <BricksSelector bricks={bricks}/>
         </form>
       </div>

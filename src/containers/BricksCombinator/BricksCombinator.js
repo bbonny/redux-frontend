@@ -107,14 +107,13 @@ export default class BricksCombinator extends Component {
   render() {
     return (
       <div className="combinator-container">
-      <h2> Which BRICKS do you want to include to your presentations? </h2>
-      <BricksCombinatorForm
-          fields={fields}
-          onSubmit={this.handleSubmit}
-          mergeInProgress={this.props.mergeInProgress}
-          readyToDownload={this.props.readyToDownload}
-          slideSlices={slideSlices}
-      />
+        <BricksCombinatorForm
+           fields={fields}
+            onSubmit={this.handleSubmit}
+            mergeInProgress={this.props.mergeInProgress}
+            readyToDownload={this.props.readyToDownload}
+            slideSlices={slideSlices}
+        />
       </div>
     );
   }

@@ -13,7 +13,6 @@ export default class BricksSelector extends Component {
         columns.push([]);
       }
       columns[brick.column.value].push(bricks[index]);
-      console.log(columns);
     });
     return columns;
   }
@@ -21,16 +20,17 @@ export default class BricksSelector extends Component {
   render() {
     const {bricks} = this.props;
     const columns = this.getColumns(bricks);
+
     return (
-      <div>
-        <div className="row">
-          {columns.map((column, columnIndex) => <div key={columnIndex}>
-            <fieldset className="col-xs-12 col-sm-3">
-              <legend>Column {columnIndex + 1}</legend>
-              <BricksColumn bricks={columns[columnIndex]}/>
-            </fieldset>
-          </div>)}
-        </div>
+      <div className="row">
+        {columns.map((column, columnIndex) => <div key={columnIndex}>
+          <fieldset className="col-xs-12 col-sm-3">
+            <BricksColumn
+              bricks={columns[columnIndex]}
+              name={'Column: ' + (columnIndex + 1)}
+            />
+          </fieldset>
+        </div>)}
       </div>
     );
   }

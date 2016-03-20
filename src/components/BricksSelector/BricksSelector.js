@@ -1,19 +1,35 @@
 import React, {Component, PropTypes} from 'react';
-import PureInput from '../PureInput/PureInput';
+import { BricksColumn } from 'components';
 
 export default class BricksSelector extends Component {
   static propTypes = {
-    name: PropTypes.object.isRequired,
-    checked: PropTypes.object.isRequired
+    bricks: PropTypes.array.isRequired
   };
 
+  getColumns = (bricks) => {
+    const columns = [];
+    bricks.forEach((brick, index) => {
+      if (columns[brick.column.value] === undefined) {
+        columns.push([]);
+      }
+      columns[brick.column.value].push(bricks[index]);
+      console.log(columns);
+    });
+    return columns;
+  }
+
   render() {
-    const {name, checked} = this.props;
+    const {bricks} = this.props;
+    const columns = this.getColumns(bricks);
     return (
-      <div className="form-group">
-        <label htmlFor="cover" className="col-sm-4">{name.value}</label>
-        <div className="col-sm-2">
-          <PureInput type="checkbox" placeholder="Brick" field={checked} />
+      <div>
+        <div className="row">
+          {columns.map((column, columnIndex) => <div key={columnIndex}>
+            <fieldset className="col-xs-12 col-sm-3">
+              <legend>Column {columnIndex + 1}</legend>
+              <BricksColumn bricks={columns[columnIndex]}/>
+            </fieldset>
+          </div>)}
         </div>
       </div>
     );

@@ -5,6 +5,7 @@
  *
  */
 
+export BricksColumn from './BricksSelector/BricksColumn';
 export BricksSelector from './BricksSelector/BricksSelector';
 export DownloadButton from './DownloadButton/DownloadButton';
 export NavigationBar from './NavigationBar/NavigationBar';

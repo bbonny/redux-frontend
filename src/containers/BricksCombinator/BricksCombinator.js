@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
+
 import {BricksCombinatorForm} from 'components';
-import {DownloadButton} from 'components';
 import * as slidesActions from 'redux/modules/slides';
 import {fields} from '../../components/BricksCombinatorForm/BricksCombinatorForm';
 
@@ -75,12 +75,12 @@ const slideSlices = [
 
 @connect(
   state => ({
-    mergeInProgress: state.slides.merging,
-    readyToDownload: state.slides.merged,
+    mergeInProgress: state.slides.mergeInProgress,
+    readyToDownload: state.slides.readyToDownload,
   }),
   slidesActions,
 )
-export default class BricksCombinatorContainer extends Component {
+export default class BricksCombinator extends Component {
   static propTypes = {
     mergeInProgress: PropTypes.bool,
     readyToDownload: PropTypes.bool,
@@ -111,9 +111,10 @@ export default class BricksCombinatorContainer extends Component {
       <BricksCombinatorForm
           fields={fields}
           onSubmit={this.handleSubmit}
-          merging={this.props.mergeInProgress}
-          slideSlices={slideSlices}/>
-      { this.props.readyToDownload && <DownloadButton path="/apoffice/files/temp/merged.pptx"/> }
+          mergeInProgress={this.props.mergeInProgress}
+          readyToDownload={this.props.readyToDownload}
+          slideSlices={slideSlices}
+      />
       </div>
     );
   }

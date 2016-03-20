@@ -1,5 +1,5 @@
 export App from './App/App';
-export BricksCombinatorContainer from './BricksCombinatorContainer/BricksCombinatorContainer';
+export BricksCombinator from './BricksCombinator/BricksCombinator';
 export UserPage from './UserPage/UserPage';
 export AdminPage from './AdminPage/AdminPage';
 export NotFound from './NotFound/NotFound';

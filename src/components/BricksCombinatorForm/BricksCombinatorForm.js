@@ -1,12 +1,16 @@
 import React, {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
+
 import {BricksSelector} from 'components';
+import {DownloadButton} from 'components';
+
 
 export const fields = [
   'bricks[].name',
   'bricks[].column',
   'bricks[].checked'
 ];
+
 
 @reduxForm({
   form: 'bricks_combinator',
@@ -17,7 +21,8 @@ class BricksCombinatorForm extends Component {
   static propTypes = {
     fields: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
-    merging: PropTypes.bool,
+    mergeInProgress: PropTypes.bool,
+    readyToDownload: PropTypes.bool,
     slideSlices: PropTypes.array
   }
 
@@ -39,11 +44,12 @@ class BricksCombinatorForm extends Component {
     const {
       fields: {bricks},
       handleSubmit,
-      merging,
+      mergeInProgress,
+      readyToDownload,
     } = this.props;
 
     let refreshClassName = 'fa fa-refresh';
-    if (merging) {
+    if (mergeInProgress) {
       refreshClassName += ' fa-spin';
     }
     return (
@@ -53,7 +59,8 @@ class BricksCombinatorForm extends Component {
           <div className="col-sm-10">
             <button className={'btn btn-success'} onClick={handleSubmit}>
               <i className={refreshClassName} /> Generate
-            </button>
+            </button>&nbsp;&nbsp;
+            { readyToDownload && <DownloadButton path="/apoffice/files/temp/merged.pptx"/> }
           </div>
         </div>
         <BricksSelector bricks={bricks}/>

@@ -1,23 +1,22 @@
 import React, {Component, PropTypes} from 'react';
-import PureInput from '../PureInput/PureInput';
+import { Brick } from 'components';
+
 
 export default class BricksColumn extends Component {
   static propTypes = {
     bricks: PropTypes.array,
+    name: PropTypes.string,
   };
 
   render() {
-    const {bricks} = this.props;
+    const {bricks, name} = this.props;
+    const styles = require('./BricksColumn.scss');
 
     return (
-      <div>
+      <div className={styles.column}>
+        <h5>{name}</h5>
         {bricks.map((brick, index) => <div key={index}>
-          <div className="form-group">
-            <label htmlFor="cover" className="col-sm-4">{brick.name.value}</label>
-            <div className="col-sm-2">
-              <PureInput type="checkbox" field={brick.checked} />
-            </div>
-          </div>
+          <Brick brick={brick}/>
         </div>)}
       </div>
     );

@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
-import PureInput from '../PureInput/PureInput';
+import { Brick } from 'components';
+
 
 export default class BricksColumn extends Component {
   static propTypes = {
@@ -13,14 +14,9 @@ export default class BricksColumn extends Component {
 
     return (
       <div className={styles.column}>
-        <legend>{name}</legend>
+        <h5>{name}</h5>
         {bricks.map((brick, index) => <div key={index}>
-          <div className="form-group row">
-            <div htmlFor="cover" className="col-xs-10 col-sm-10">{brick.name.value}</div>
-            <div className="col-xs-2 col-sm-2">
-              <PureInput type="checkbox" field={brick.checked} />
-            </div>
-          </div>
+          <Brick brick={brick}/>
         </div>)}
       </div>
     );

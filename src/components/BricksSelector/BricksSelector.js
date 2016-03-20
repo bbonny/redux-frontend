@@ -27,7 +27,7 @@ export default class BricksSelector extends Component {
           <fieldset className="col-xs-12 col-sm-3">
             <BricksColumn
               bricks={columns[columnIndex]}
-              name={'Column: ' + (columnIndex + 1)}
+              name={(columnIndex + 1) + ': Column name'}
             />
           </fieldset>
         </div>)}

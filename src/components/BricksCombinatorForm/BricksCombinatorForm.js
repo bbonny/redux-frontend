@@ -26,7 +26,7 @@ class BricksCombinatorForm extends Component {
     slideSlices: PropTypes.array
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const {
       fields: {bricks},
       slideSlices
@@ -48,17 +48,15 @@ class BricksCombinatorForm extends Component {
       readyToDownload,
     } = this.props;
 
-    let refreshClassName = 'fa fa-refresh';
-    if (mergeInProgress) {
-      refreshClassName += ' fa-spin';
-    }
     return (
       <form className="form-horizontal" onSubmit={handleSubmit}>
         <br />
         <div className="form-group">
           <div className="col-sm-10">
             <button className={'btn btn-success'} onClick={handleSubmit}>
-              <i className={refreshClassName} /> Generate
+              <i
+                className={'fa fa-refresh' + (mergeInProgress ? ' fa-spin' : '')}
+              /> Generate
             </button>&nbsp;&nbsp;
             { readyToDownload && <DownloadButton path="/apoffice/files/temp/merged.pptx"/> }
           </div>

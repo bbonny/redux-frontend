@@ -12,9 +12,14 @@ const environment = {
 module.exports = Object.assign({
   host: process.env.HOST || 'localhost',
   port: process.env.PORT,
-  apiHost: process.env.APIHOST || 'localhost',
-  apiPort: process.env.APIPORT,
-  apofficeHost: process.env.APOFFICEHOST || 'apoffice-integration.azurewebsites.net/api',
+  apiHosts: {
+    api: process.env.APIHOST || 'localhost',
+    apoffice: process.env.APOFFICEHOST || 'apoffice-integration.azurewebsites.net/api',
+  },
+  apiPorts: {
+    api: process.env.APIPORT,
+    apoffice: '80',
+  },
   app: {
     title: 'BRICKS',
     description: 'A pptx presentation in the blink of an eye !',

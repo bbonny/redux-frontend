@@ -11,4 +11,5 @@ export BricksSelector from './BricksSelector/BricksSelector';
 export BricksCombinatorForm from './BricksCombinatorForm/BricksCombinatorForm';
 export DownloadButton from './DownloadButton/DownloadButton';
 export NavigationBar from './NavigationBar/NavigationBar';
+export PresentationConfigurator from './PresentationConfigurator/PresentationConfigurator';
 export PureInput from './PureInput/PureInput';

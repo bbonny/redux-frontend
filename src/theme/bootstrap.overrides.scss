@@ -2,24 +2,3 @@
  * Override Bootstrap styles that you can't modify via variables here.
  *
  */
-
-a.navbar-brand {
-  position: relative;
-  color: #ffffff;
-}
-.navbar-brand,
-.navbar-default {
-  background-color: #5b9bd5;
-  border-color: #E7E7E7;
-  color: #ffffff;
-}
-
-.navbar-default .navbar-brand {
-  color: #ffffff; 
-}
-.navbar-default .navbar-nav > li > a {
-	color: #ffffff; 
-}
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-	color: #ffffff;
-}

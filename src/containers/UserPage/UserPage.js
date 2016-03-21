@@ -10,7 +10,7 @@ export default class UserPage extends Component {
     return (
       <div className={styles.home}>
         <Helmet title="User Mode"/>
-        <div className="container">
+        <div className="container-fluid">
           <BricksCombinator />
         </div>
       </div>

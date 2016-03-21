@@ -12,7 +12,7 @@ export default class NavigationBar extends Component {
   render() {
     return (
       <div>
-        <Navbar fixedTop>
+        <Navbar fixedTop fluid>
           <Navbar.Header>
             <Navbar.Brand>
               <IndexLink to="/" activeStyle={{color: '#ffffff'}}>

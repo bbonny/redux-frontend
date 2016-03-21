@@ -3,14 +3,13 @@ import config from '../config';
 
 const methods = ['get', 'post', 'put', 'patch', 'del'];
 
-function formatUrl(path) {
+function formatUrl(path, apiName) {
   const adjustedPath = path[0] !== '/' ? '/' + path : path;
   if (__SERVER__) {
     // Prepend host and port of the API server to the path.
-    return 'http://' + config.apofficeHost + adjustedPath;
+    return 'http://' + config.apiHosts[apiName] + ':' + config.apiPorts[apiName] + adjustedPath;
   }
-  // Prepend `/api` to relative URL, to proxy to API server.
-  return '/apoffice' + adjustedPath;
+  return '/' + apiName + adjustedPath;
 }
 
 /*
@@ -22,8 +21,8 @@ function formatUrl(path) {
 class _ApiClient {
   constructor(req) {
     methods.forEach((method) =>
-      this[method] = (path, { params, data, file } = {}) => new Promise((resolve, reject) => {
-        const request = superagent[method](formatUrl(path));
+      this[method] = (path, apiName, { params, data, file } = {}) => new Promise((resolve, reject) => {
+        const request = superagent[method](formatUrl(path, apiName));
 
         if (params) {
           request.query(params);

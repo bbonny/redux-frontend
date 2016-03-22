@@ -3,9 +3,13 @@ import {reduxForm} from 'redux-form';
 
 import {BricksSelector} from 'components';
 import {DownloadButton} from 'components';
-
+import {PresentationConfigurator} from 'components';
 
 export const fields = [
+  'configurator.clientName',
+  'configurator.salesName',
+  'configurator.templateName',
+  'configurator.dividers',
   'bricks[].name',
   'bricks[].column',
   'bricks[].checked'
@@ -42,7 +46,7 @@ class BricksCombinatorForm extends Component {
 
   render() {
     const {
-      fields: {bricks},
+      fields: {bricks, configurator},
       handleSubmit,
       mergeInProgress,
       readyToDownload,
@@ -61,6 +65,7 @@ class BricksCombinatorForm extends Component {
             { readyToDownload && <DownloadButton path="/apoffice/files/temp/merged.pptx"/> }
           </div>
         </div>
+        <PresentationConfigurator fields={configurator}/>
         <BricksSelector bricks={bricks}/>
       </form>
     );

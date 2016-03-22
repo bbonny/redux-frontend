@@ -9,8 +9,8 @@ export default class DownloadButton extends Component {
   render() {
     const {path} = this.props; // eslint-disable-line no-shadow
     return (
-      <a href={path} role="button" className={'btn btn-default'}>
-      <i className={"fa fa-download"}/>&nbsp;Download
+      <a href={path} role="button" className={'col-sm-12 col-xs-12 btn btn-default'}>
+        <i className={"fa fa-download"}/>Download
       </a>
     );
   }

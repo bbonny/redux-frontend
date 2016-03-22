@@ -53,19 +53,31 @@ class BricksCombinatorForm extends Component {
     } = this.props;
 
     return (
-      <form className="form-horizontal" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <br />
-        <div className="form-group">
-          <div className="col-sm-10">
-            <button className={'btn btn-success'} onClick={handleSubmit}>
-              <i
-                className={'fa fa-refresh' + (mergeInProgress ? ' fa-spin' : '')}
-              /> Generate
-            </button>&nbsp;&nbsp;
-            { readyToDownload && <DownloadButton path="/apoffice/files/temp/merged.pptx"/> }
+        <div className="row">
+          <fieldset className="col-sm-9 col-xs-12">
+            <PresentationConfigurator fields={configurator}/>
+          </fieldset>
+          <div className="col-sm-3 col-xs-12">
+            <div className="row">
+              <div className="col-sm-12 col-xs-12">
+                <button className={'btn btn-success col-sm-12 col-xs-12'} onClick={handleSubmit}>
+                  <i
+                    className={'fa fa-refresh' + (mergeInProgress ? ' fa-spin' : '')}
+                  /> Generate
+                </button>
+              </div>
+            </div>
+            <br/>
+            <div className="row">
+              <div className="col-sm-12 col-xs-12">
+                { readyToDownload && <DownloadButton path="/apoffice/files/temp/merged.pptx"/> }
+              </div>
+            </div>
           </div>
         </div>
-        <PresentationConfigurator fields={configurator}/>
+        <br/>
         <BricksSelector bricks={bricks}/>
       </form>
     );

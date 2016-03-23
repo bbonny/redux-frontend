@@ -27,7 +27,8 @@ class BricksCombinatorForm extends Component {
     handleSubmit: PropTypes.func.isRequired,
     mergeInProgress: PropTypes.bool,
     readyToDownload: PropTypes.bool,
-    slideSlices: PropTypes.array
+    slideSlices: PropTypes.array,
+    mergeError: PropTypes.string,
   }
 
   componentWillMount() {
@@ -50,6 +51,7 @@ class BricksCombinatorForm extends Component {
       handleSubmit,
       mergeInProgress,
       readyToDownload,
+      mergeError,
     } = this.props;
 
     return (
@@ -72,6 +74,7 @@ class BricksCombinatorForm extends Component {
             <br/>
             <div className="row">
               <div className="col-sm-12 col-xs-12">
+                { mergeError && <span className="text-danger">{mergeError}</span>}
                 { readyToDownload && <DownloadButton path="/apoffice/files/temp/merged.pptx"/> }
               </div>
             </div>

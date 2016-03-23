@@ -13,6 +13,7 @@ import {fields} from '../../components/BricksCombinatorForm/BricksCombinatorForm
     bricks: state.slides.bricks,
     loading: state.slides.loading,
     readyToShow: state.slides.readyToShow,
+    mergeError: state.slides.mergeError,
   }),
   slidesActions,
 )
@@ -20,6 +21,7 @@ export default class BricksCombinator extends Component {
   static propTypes = {
     mergeInProgress: PropTypes.bool,
     readyToDownload: PropTypes.bool,
+    mergeError: PropTypes.string,
     merge: PropTypes.func,
     getBricks: PropTypes.func,
     bricks: PropTypes.array,
@@ -49,7 +51,7 @@ export default class BricksCombinator extends Component {
   }
 
   render() {
-    const {mergeInProgress, readyToDownload, bricks, readyToShow} = this.props;
+    const {mergeInProgress, readyToDownload, bricks, readyToShow, mergeError} = this.props;
     return (
       <div className="combinator-container">
         {readyToShow &&
@@ -59,6 +61,7 @@ export default class BricksCombinator extends Component {
             mergeInProgress={mergeInProgress}
             readyToDownload={readyToDownload}
             slideSlices={bricks}
+            mergeError={mergeError}
           />
         }
       </div>

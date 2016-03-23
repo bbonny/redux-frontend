@@ -13,7 +13,7 @@ const initialState = {
   readyToShow: false,
   loading: false,
   loadError: {},
-  mergeError: {},
+  mergeError: '',
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -23,21 +23,22 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         mergeInProgress: true,
         readyToDownload: false,
-        mergeError: {}
+        mergeError: ''
       };
     case MERGE_SUCCESS:
       return {
         ...state,
         mergeInProgress: false,
         readyToDownload: true,
-        mergeError: {}
+        mergeError: ''
       };
     case MERGE_FAIL:
+      console.log(action);
       return {
         ...state,
         mergeInProgress: false,
         readyToDownload: false,
-        mergeError: action.error
+        mergeError: action.error.message
       };
     case LOAD:
       return {

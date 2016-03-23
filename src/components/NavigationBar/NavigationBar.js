@@ -20,12 +20,14 @@ export default class NavigationBar extends Component {
               </IndexLink>
             </Navbar.Brand>
           </Navbar.Header>
-          <Nav pullRight>
-            <NavDropdown title="Mode" id="nav-dropdown">
-              <LinkContainer to="/"><MenuItem>User Mode</MenuItem></LinkContainer>
-              <LinkContainer to="/admin"><MenuItem>Admin Mode</MenuItem></LinkContainer>
-            </NavDropdown>
-          </Nav>
+          <Navbar.Collapse>
+            <Nav pullRight>
+              <NavDropdown title="Mode" id="nav-dropdown">
+                <LinkContainer to="/"><MenuItem>User Mode</MenuItem></LinkContainer>
+                <LinkContainer to="/admin"><MenuItem>Admin Mode</MenuItem></LinkContainer>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
         </Navbar>
       </div>
     );

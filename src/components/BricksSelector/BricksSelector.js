@@ -22,15 +22,17 @@ export default class BricksSelector extends Component {
     const columns = this.getColumns(bricks);
 
     return (
-      <div className="row">
-        {columns.map((column, columnIndex) => <div key={columnIndex}>
-          <fieldset className="col-xs-12 col-sm-3">
-            <BricksColumn
-              bricks={columns[columnIndex]}
-              name={(columnIndex + 1) + ': Column name'}
-            />
-          </fieldset>
-        </div>)}
+      <div>
+        <div className="row">
+          {columns.map((column, columnIndex) => <div key={columnIndex}>
+            <div className={'col-xs-12 col-sm-3' + (columnIndex === 0 ? '' : ' columns-padding')}>
+              <BricksColumn
+                bricks={columns[columnIndex]}
+                name={(columnIndex + 1) + ': Column name'}
+              />
+            </div>
+          </div>)}
+        </div>
       </div>
     );
   }

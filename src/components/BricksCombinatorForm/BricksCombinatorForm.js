@@ -71,11 +71,15 @@ class BricksCombinatorForm extends Component {
                 </button>
               </div>
             </div>
-            <br/>
             <div className="row">
               <div className="col-sm-12 col-xs-12">
                 { mergeError && <span className="text-danger">{mergeError}</span>}
-                { readyToDownload && <DownloadButton path="/apoffice/files/temp/merged.pptx"/> }
+                { readyToDownload &&
+                  <div>
+                    <br/>
+                    <DownloadButton path="/apoffice/files/temp/merged.pptx"/>
+                  </div>
+                }
               </div>
             </div>
           </div>

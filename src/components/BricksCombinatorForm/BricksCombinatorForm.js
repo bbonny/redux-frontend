@@ -58,9 +58,9 @@ class BricksCombinatorForm extends Component {
       <form onSubmit={handleSubmit}>
         <br />
         <div className="row">
-          <fieldset className="col-sm-9 col-xs-12">
+          <div className="col-sm-9 col-xs-12">
             <PresentationConfigurator fields={configurator}/>
-          </fieldset>
+          </div>
           <div className="col-sm-3 col-xs-12">
             <div className="row">
               <div className="col-sm-12 col-xs-12">

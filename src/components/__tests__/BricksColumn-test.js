@@ -5,23 +5,23 @@ import { expect} from 'chai';
 
 import { BricksColumn } from 'components';
 
-describe('BricksColumn', () => {
 
+describe('BricksColumn', () => {
   const bricks = [
     {
       checked: {value: true},
-      name: {value: "Coucou"},
+      name: {value: 'Coucou'},
     },
     {
       checked: {value: false},
-      name: {value: "Potato"},
+      name: {value: 'Potato'},
     },
     {
       checked: {value: true},
-      name: {value: "Banana"},
+      name: {value: 'Banana'},
     },
   ];
-  const name = "I am a column";
+  const name = 'I am a column';
 
   const renderer = renderIntoDocument(
     <BricksColumn bricks={bricks} name={name}/>

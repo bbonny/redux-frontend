@@ -41,8 +41,8 @@ app.use('/api', (req, res) => {
 });
 
 // Proxy to apoffice API server
-app.use('/apoffice', function(req, res) {
-  var url = apofficeUrl + req.url;
+app.use('/apoffice', (req, res) => {
+  const url = apofficeUrl + req.url;
   req.pipe(request(url)).pipe(res);
 });
 

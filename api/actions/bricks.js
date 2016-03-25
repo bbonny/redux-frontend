@@ -66,8 +66,8 @@ const initialBricks = [
 ];
 
 
-export default function bricks(req) {
-  return new Promise((resolve, reject) => {
+export default function bricks() {
+  return new Promise((resolve) => {
     resolve(initialBricks);
   });
 }

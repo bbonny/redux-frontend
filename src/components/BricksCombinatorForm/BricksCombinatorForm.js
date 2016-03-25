@@ -27,6 +27,7 @@ class BricksCombinatorForm extends Component {
     handleSubmit: PropTypes.func.isRequired,
     mergeInProgress: PropTypes.bool,
     readyToDownload: PropTypes.bool,
+    downloadUrl: PropTypes.string,
     slideSlices: PropTypes.array,
     mergeError: PropTypes.string,
   }
@@ -51,6 +52,7 @@ class BricksCombinatorForm extends Component {
       handleSubmit,
       mergeInProgress,
       readyToDownload,
+      downloadUrl,
       mergeError,
     } = this.props;
 
@@ -77,7 +79,7 @@ class BricksCombinatorForm extends Component {
                 { readyToDownload &&
                   <div>
                     <br/>
-                    <DownloadButton path="/apoffice/files/temp/merged.pptx"/>
+                    <DownloadButton path={downloadUrl}/>
                   </div>
                 }
               </div>

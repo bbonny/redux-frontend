@@ -10,6 +10,7 @@ import {fields} from '../../components/BricksCombinatorForm/BricksCombinatorForm
   state => ({
     mergeInProgress: state.slides.mergeInProgress,
     readyToDownload: state.slides.readyToDownload,
+    downloadUrl: state.slides.downloadUrl,
     bricks: state.slides.bricks,
     loading: state.slides.loading,
     readyToShow: state.slides.readyToShow,
@@ -21,8 +22,10 @@ export default class BricksCombinator extends Component {
   static propTypes = {
     mergeInProgress: PropTypes.bool,
     readyToDownload: PropTypes.bool,
+    downloadUrl: PropTypes.string,
     mergeError: PropTypes.string,
     merge: PropTypes.func,
+    setDownloadUrl: PropTypes.func,
     getBricks: PropTypes.func,
     bricks: PropTypes.array,
     loading: PropTypes.bool,
@@ -34,8 +37,9 @@ export default class BricksCombinator extends Component {
   }
 
   transformFormData = (data) => {
+    const clientNameCleaned = data.configurator.clientName.replace(/\s/g, '');
     const result = {
-      outputPath: 'temp/merged.pptx',
+      outputPath: `temp/${clientNameCleaned}.pptx`,
       inputSlides: []
     };
     this.props.bricks.forEach((slice, index) => {
@@ -47,11 +51,20 @@ export default class BricksCombinator extends Component {
   }
 
   handleSubmit = (data) => {
-    this.props.merge(this.transformFormData(data));
+    const transformedData = this.transformFormData(data);
+    this.props.merge(transformedData);
+    this.props.setDownloadUrl(`/apoffice/files/${transformedData.outputPath}`);
   }
 
   render() {
-    const {mergeInProgress, readyToDownload, bricks, readyToShow, mergeError} = this.props;
+    const {
+        mergeInProgress,
+        readyToDownload,
+        downloadUrl,
+        bricks,
+        readyToShow,
+        mergeError
+    } = this.props;
     return (
       <div className="combinator-container">
         {readyToShow &&
@@ -60,6 +73,7 @@ export default class BricksCombinator extends Component {
             onSubmit={this.handleSubmit}
             mergeInProgress={mergeInProgress}
             readyToDownload={readyToDownload}
+            downloadUrl={downloadUrl}
             slideSlices={bricks}
             mergeError={mergeError}
           />

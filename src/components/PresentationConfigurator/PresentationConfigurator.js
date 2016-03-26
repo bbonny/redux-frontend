@@ -15,7 +15,7 @@ export default class PresentationConfigurator extends Component {
 
     return (
       <div className={styles.configurator}>
-        <Row>
+        <Row className={styles.rowspaced}>
           <Col xs={12} sm={6}>
             <Input
               labelClassName="col-xs-4 col-sm-4"
@@ -36,6 +36,8 @@ export default class PresentationConfigurator extends Component {
               {...salesName}
             />
           </Col>
+        </Row>
+        <Row className={styles.rowspaced}>
           <Col xs={12} sm={6}>
             <Input
               labelClassName="col-xs-4 col-sm-4"

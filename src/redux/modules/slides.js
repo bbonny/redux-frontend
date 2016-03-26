@@ -4,6 +4,7 @@ const MERGE_FAIL = 'redux-example/slides/MERGE_FAIL';
 const LOAD = 'redux-example/slides/LOAD';
 const LOAD_SUCCESS = 'redux-example/slides/LOAD_SUCCESS';
 const LOAD_FAIL = 'redux-example/slides/LOAD_FAIL';
+const SET_DOWNLOAD_URL = 'redux-example/slides/SET_DOWNLOAD_URL';
 
 const initialState = {
   bricks: [],
@@ -26,6 +27,8 @@ export default function reducer(state = initialState, action = {}) {
         mergeError: ''
       };
     case MERGE_SUCCESS:
+      console.log('action');
+      console.log(action);
       return {
         ...state,
         mergeInProgress: false,
@@ -33,7 +36,6 @@ export default function reducer(state = initialState, action = {}) {
         mergeError: ''
       };
     case MERGE_FAIL:
-      console.log(action);
       return {
         ...state,
         mergeInProgress: false,
@@ -60,6 +62,11 @@ export default function reducer(state = initialState, action = {}) {
         loading: false,
         loadError: action.error
       };
+    case SET_DOWNLOAD_URL:
+      return {
+        ...state,
+        downloadUrl: action.downloadUrl,
+      };
     default:
       return state;
   }
@@ -76,6 +83,13 @@ export function getBricks() {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
     promise: (client) => client.get('bricks', 'api')
+  };
+}
+
+export function setDownloadUrl(downloadUrl) {
+  return {
+    type: SET_DOWNLOAD_URL,
+    downloadUrl: downloadUrl,
   };
 }
 

@@ -1,8 +1,26 @@
-.dropzone {
-  width: 200;
-  height: 20;
-  borderWidth: 2;
-  borderColor: '#666';
-  borderStyle: 'dashed';
-  borderRadius: 5;
+.admin {
+}
+.leftmenu {
+  width: 100px;
+  background-color: #3f3f3f;
+  text-align: center;
+  padding-top: 10px;
+  span {
+    color: white;
+  }
+  @media (max-width: 768px) {
+    width: auto;
+  }
+  @media (min-width: 768px) {
+    position: absolute;
+    margin-top: -50px;
+    padding-top: 60px;
+    height: 100%;
+  }
+}
+.container {
+  @media (min-width: 768px) {
+    margin-left: 115px;
+    margin-right: 15px;
+  }
 }

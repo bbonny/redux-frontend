@@ -37,9 +37,14 @@ export default class BricksCombinator extends Component {
   }
 
   transformFormData = (data) => {
-    const clientNameCleaned = data.configurator.clientName.replace(/\s/g, '');
+    const slugify = require('slugify');
+    const dateFormat = require('dateformat');
+
+    const createdAt = dateFormat(Date(), 'yyyymmdd');
+    const fileName = slugify(data.configurator.clientName.concat(createdAt));
+
     const result = {
-      outputPath: `temp/${clientNameCleaned}.pptx`,
+      outputPath: `temp/${fileName}.pptx`,
       inputSlides: []
     };
     this.props.bricks.forEach((slice, index) => {

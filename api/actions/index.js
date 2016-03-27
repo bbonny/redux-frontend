@@ -1,1 +1,0 @@
-export bricks from './bricks';

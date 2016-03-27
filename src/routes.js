@@ -16,7 +16,11 @@ export default () => {
       { /* Home (main) route */ }
       <Route path="/" component={UserPage}/>
 
-      <Route path="admin" component={AdminPage} />
+      <Route path="admin" component={AdminPage}>
+        <Route path="/admin/wall" component={AdminPage}/>
+        <Route path="/admin/edit" component={AdminPage}/>
+        <Route path="/admin/documents" component={AdminPage}/>
+      </Route>
 
       { /* Catch all route */ }
       <Route path="*" component={NotFound} status={404} />

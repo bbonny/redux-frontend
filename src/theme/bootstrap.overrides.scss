@@ -16,7 +16,14 @@
   .glyphicon.glyphicon-th, .glyphicon.glyphicon-cog, .glyphicon.glyphicon-folder-open {
       font-size: 40px;
   }
-  .nav > li > a:hover, .nav > li > a:focus {
-    background-color: #777777 !important;
+  .nav > li > a:hover {
+    text-decoration: none;
+    background-color: #777777;
+  }
+  .nav-pills > li.active > a,
+  .nav-pills > li.active > a:hover,
+  .nav-pills > li.active > a:focus {
+    text-decoration: none;
+    background-color: #5b9bd5;
   }
 }

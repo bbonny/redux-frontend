@@ -1,11 +1,18 @@
 const UPLOAD = 'redux-example/filse/UPLOAD';
 const UPLOAD_SUCCESS = 'redux-example/files/UPLOAD_SUCCESS';
 const UPLOAD_FAIL = 'redux-example/files/UPLOAD_FAIL';
+const LOAD_LIST = 'redux-example/filse/LOAD_LIST';
+const LOAD_LIST_SUCCESS = 'redux-example/files/LOAD_LIST_SUCCESS';
+const LOAD_LIST_FAIL = 'redux-example/files/LOAD_LIST_FAIL';
 
 const initialState = {
   uploading: false,
   uploaded: false,
-  error: {},
+  uploadError: {},
+  listLoading: false,
+  listLoaded: false,
+  listLoadError: {},
+  documentsList: [],
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -15,21 +22,43 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         uploading: true,
         uploaded: false,
-        error: {}
+        uploadError: {}
       };
     case UPLOAD_SUCCESS:
       return {
         ...state,
         uploading: false,
         uploaded: true,
-        error: {}
+        uploadError: {}
       };
     case UPLOAD_FAIL:
       return {
         ...state,
         uploading: false,
         uploaded: false,
-        error: action.error
+        uploadError: action.error
+      };
+    case LOAD_LIST:
+      return {
+        ...state,
+        listLoading: true,
+        listLoaded: false,
+        listLoadError: {},
+      };
+    case LOAD_LIST_SUCCESS:
+      return {
+        ...state,
+        listLoading: false,
+        listLoaded: true,
+        listLoadError: {},
+        documentsList: action.result,
+      };
+    case LOAD_LIST_FAIL:
+      return {
+        ...state,
+        listLoading: false,
+        listLoaded: false,
+        listLoadError: action.error
       };
     default:
       return state;
@@ -39,7 +68,14 @@ export default function reducer(state = initialState, action = {}) {
 export function upload(file) {
   return {
     types: [UPLOAD, UPLOAD_SUCCESS, UPLOAD_FAIL],
-    promise: (client) => client.put('files/demo/' + file.name, {'file': file})
+    promise: (client) => client.put('files/demo/' + file.name, 'apoffice', {'file': file})
+  };
+}
+
+export function getList(path) {
+  return {
+    types: [LOAD_LIST, LOAD_LIST_SUCCESS, LOAD_LIST_FAIL],
+    promise: (client) => client.get('files/list/' + path, 'apoffice')
   };
 }
 

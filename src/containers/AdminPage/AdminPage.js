@@ -7,7 +7,7 @@ import Nav from 'react-bootstrap/lib/Nav';
 import NavItem from 'react-bootstrap/lib/NavItem';
 
 import {BricksCombinator} from 'containers';
-
+import {DocumentsExplorer} from 'components';
 
 @connect(
   state => ({pathname: state.routing.location.pathname}),
@@ -55,7 +55,7 @@ export default class AdminPage extends Component {
             <h1>Edition is comming soon</h1>
           }
           {this.props.pathname === '/admin/documents' &&
-            <h1>Wanna see your docs? Hum ... it's embarassing...</h1>
+            <DocumentsExplorer />
           }
         </div>
       </div>

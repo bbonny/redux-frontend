@@ -24,7 +24,7 @@ export default class NavigationBar extends Component {
             <Nav pullRight>
               <NavDropdown title="Mode" id="nav-dropdown">
                 <LinkContainer to="/"><MenuItem>User Mode</MenuItem></LinkContainer>
-                <LinkContainer to="/admin"><MenuItem>Admin Mode</MenuItem></LinkContainer>
+                <LinkContainer to="/admin/wall"><MenuItem>Admin Mode</MenuItem></LinkContainer>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>

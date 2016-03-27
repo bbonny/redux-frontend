@@ -8,7 +8,7 @@ export default formReducer.plugin({
       case TEMPLATE_UNSELECT_ALL:
         const unselectedBricks = [];
         state.bricks.forEach((brick) => {
-          const unselectedBrick = Object.assign({}, brick);
+          const unselectedBrick = {...brick};
           unselectedBrick.checked.value = false;
           unselectedBricks.push(unselectedBrick);
         });

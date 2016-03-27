@@ -1,5 +1,7 @@
-import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
+import dateformat from 'dateformat';
+import React, {Component, PropTypes} from 'react';
+import slugify from 'slugify';
 
 import {BricksCombinatorForm} from 'components';
 import * as slidesActions from 'redux/modules/slides';
@@ -37,13 +39,17 @@ export default class BricksCombinator extends Component {
   }
 
   transformFormData = (data) => {
-    const clientNameCleaned = data.configurator.clientName.replace(/\s/g, '');
+    const createdAt = dateformat(Date(), 'yyyymmdd');
+    const fileName = slugify(data.configurator.clientName.concat(createdAt));
+
     const result = {
-      outputPath: `temp/${clientNameCleaned}.pptx`,
+      outputPath: `temp/${fileName}.pptx`,
       inputSlides: []
     };
     this.props.bricks.forEach((slice, index) => {
       if (data.bricks[index].checked) {
+        slice.path = slice.remote_path;
+        delete slice.remote_path;
         result.inputSlides.push(slice);
       }
     });

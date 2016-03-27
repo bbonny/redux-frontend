@@ -1,5 +1,7 @@
-import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
+import dateformat from 'dateformat';
+import React, {Component, PropTypes} from 'react';
+import slugify from 'slugify';
 
 import {BricksCombinatorForm} from 'components';
 import * as slidesActions from 'redux/modules/slides';
@@ -37,10 +39,7 @@ export default class BricksCombinator extends Component {
   }
 
   transformFormData = (data) => {
-    const slugify = require('slugify');
-    const dateFormat = require('dateformat');
-
-    const createdAt = dateFormat(Date(), 'yyyymmdd');
+    const createdAt = dateformat(Date(), 'yyyymmdd');
     const fileName = slugify(data.configurator.clientName.concat(createdAt));
 
     const result = {

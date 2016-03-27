@@ -4,6 +4,19 @@
  */
 
 .columns-padding {
-   padding-left: 0px !important;
+  @media (min-width: 768px) {
+     padding-left: 0px !important;
+  }
 }
 
+/**
+* Admin page menu
+*/
+.admin-left-menu {
+  .glyphicon.glyphicon-th, .glyphicon.glyphicon-cog, .glyphicon.glyphicon-folder-open {
+      font-size: 40px;
+  }
+  .nav > li > a:hover, .nav > li > a:focus {
+    background-color: #777777 !important;
+  }
+}

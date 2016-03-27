@@ -1,18 +1,15 @@
 import React, {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
 
-import {BricksSelector} from 'components';
-import {DownloadButton} from 'components';
-import {PresentationConfigurator} from 'components';
+import {BricksSelector, DownloadButton, PresentationConfigurator} from 'components';
 
 export const fields = [
   'configurator.clientName',
   'configurator.salesName',
-  'configurator.templateName',
   'configurator.dividers',
   'bricks[].name',
   'bricks[].column',
-  'bricks[].checked'
+  'bricks[].checked',
 ];
 
 
@@ -37,7 +34,7 @@ class BricksCombinatorForm extends Component {
       fields: {bricks},
       slideSlices
     } = this.props;
-    slideSlices.forEach(function addSlice(slice) {
+    slideSlices.forEach((slice) => {
       bricks.addField({
         name: slice.name,
         checked: slice.checked,

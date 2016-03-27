@@ -27,8 +27,6 @@ export default function reducer(state = initialState, action = {}) {
         mergeError: ''
       };
     case MERGE_SUCCESS:
-      console.log('action');
-      console.log(action);
       return {
         ...state,
         mergeInProgress: false,

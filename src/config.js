@@ -15,10 +15,12 @@ module.exports = Object.assign({
   apiHosts: {
     api: process.env.APIHOST || 'localhost',
     apoffice: process.env.APOFFICEHOST || 'apoffice-integration.azurewebsites.net/api',
+    bricksApi: process.env.BRICKSAPIHOST || 'bricks-integration-backend.herokuapp.com',
   },
   apiPorts: {
     api: process.env.APIPORT,
     apoffice: '80',
+    bricksApi: '80',
   },
   app: {
     title: 'BRICKS',

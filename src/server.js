@@ -20,6 +20,7 @@ import getRoutes from './routes';
 
 const targetUrl = 'http://' + config.apiHosts.api + ':' + config.apiPorts.api;
 const apofficeUrl = 'http://' + config.apiHosts.apoffice;
+const bricksApiUrl = 'http://' + config.apiHosts.bricksApi;
 
 const pretty = new PrettyError();
 const app = new Express();
@@ -43,6 +44,12 @@ app.use('/api', (req, res) => {
 // Proxy to apoffice API server
 app.use('/apoffice', (req, res) => {
   const url = apofficeUrl + req.url;
+  req.pipe(request(url)).pipe(res);
+});
+
+// Proxy to bricks-backend API server
+app.use('/bricks-api', (req, res) => {
+  const url = bricksApiUrl + req.url;
   req.pipe(request(url)).pipe(res);
 });
 

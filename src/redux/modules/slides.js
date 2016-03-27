@@ -80,7 +80,7 @@ export function merge(data) {
 export function getBricks() {
   return {
     types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: (client) => client.get('bricks', 'api')
+    promise: (client) => client.get('brick', 'bricks-api')
   };
 }
 

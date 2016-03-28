@@ -12,6 +12,7 @@ const initialState = {
   listLoading: false,
   listLoaded: false,
   listLoadError: {},
+  pathName: '',
   documentsList: [],
 };
 
@@ -51,6 +52,7 @@ export default function reducer(state = initialState, action = {}) {
         listLoading: false,
         listLoaded: true,
         listLoadError: {},
+        pathName: action.data.pathName,
         documentsList: action.result,
       };
     case LOAD_LIST_FAIL:
@@ -72,10 +74,11 @@ export function upload(file) {
   };
 }
 
-export function getList(path) {
+export function getList(pathName) {
   return {
     types: [LOAD_LIST, LOAD_LIST_SUCCESS, LOAD_LIST_FAIL],
-    promise: (client) => client.get('files/list/' + path, 'apoffice')
+    data: {pathName: pathName},
+    promise: (client) => client.get('files/list/' + pathName, 'apoffice')
   };
 }
 

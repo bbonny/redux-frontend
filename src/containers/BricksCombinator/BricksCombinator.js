@@ -68,10 +68,14 @@ export default class BricksCombinator extends Component {
         downloadUrl,
         bricks,
         readyToShow,
-        mergeError
+        mergeError,
+        loading,
     } = this.props;
     return (
       <div className="combinator-container">
+        {loading && !readyToShow &&
+          <div><br/><i className={'fa fa-refresh fa-spin'}/></div>
+        }
         {readyToShow &&
           <BricksCombinatorForm
             fields={fields}

@@ -49,7 +49,6 @@ export default class BricksCombinator extends Component {
     this.props.bricks.forEach((slice, index) => {
       if (data.bricks[index].checked) {
         slice.path = slice.remote_path;
-        delete slice.remote_path;
         result.inputSlides.push(slice);
       }
     });

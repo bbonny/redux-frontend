@@ -67,10 +67,10 @@ export default function reducer(state = initialState, action = {}) {
   }
 }
 
-export function upload(file) {
+export function upload(path, file) {
   return {
     types: [UPLOAD, UPLOAD_SUCCESS, UPLOAD_FAIL],
-    promise: (client) => client.put('files/demo/' + file.name, 'apoffice', {'file': file})
+    promise: (client) => client.put('files/' + path + file.name, 'apoffice', {'file': file})
   };
 }
 

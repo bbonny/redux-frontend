@@ -34,7 +34,7 @@ export default class BricksCombinator extends Component {
     readyToShow: PropTypes.bool,
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getBricks();
   }
 

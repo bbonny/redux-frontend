@@ -32,6 +32,7 @@ export default class BricksCombinator extends Component {
     bricks: PropTypes.array,
     loading: PropTypes.bool,
     readyToShow: PropTypes.bool,
+    mode: PropTypes.string,
   }
 
   componentWillMount() {
@@ -68,7 +69,8 @@ export default class BricksCombinator extends Component {
         downloadUrl,
         bricks,
         readyToShow,
-        mergeError
+        mergeError,
+        mode,
     } = this.props;
     return (
       <div className="combinator-container">
@@ -81,6 +83,7 @@ export default class BricksCombinator extends Component {
             downloadUrl={downloadUrl}
             slideSlices={bricks}
             mergeError={mergeError}
+            mode={mode}
           />
         }
       </div>

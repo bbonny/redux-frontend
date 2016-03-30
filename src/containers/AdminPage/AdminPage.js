@@ -52,7 +52,7 @@ export default class AdminPage extends Component {
             <BricksCombinator />
           }
           {this.props.pathname === '/admin/edit' &&
-            <h1>Edition is comming soon</h1>
+            <BricksCombinator mode="edit"/>
           }
           {this.props.pathname === '/admin/documents' &&
             <DocumentsExplorer />

@@ -27,10 +27,11 @@ export default class DocumentsExplorer extends Component {
     uploading: PropTypes.bool,
     uploaded: PropTypes.bool,
     pathName: PropTypes.string,
+    mountingPoint: PropTypes.string.isRequired,
   }
 
   componentDidMount() {
-    this.props.getList('demo/');
+    this.props.getList(this.props.mountingPoint);
   }
 
   componentWillReceiveProps(newProps) {
@@ -65,6 +66,7 @@ export default class DocumentsExplorer extends Component {
       documentsList,
       pathName,
       uploading,
+      mountingPoint,
     } = this.props;
     const styles = require('./DocumentsExplorer.scss');
 
@@ -73,7 +75,7 @@ export default class DocumentsExplorer extends Component {
         <div className="row">
           <div className="col-sm-4">
             <h5>
-              <a onClick={this.clickItem} type="d" name="demo/">
+              <a onClick={this.clickItem} type="d" name={mountingPoint}>
                 Documents
               </a> {pathName.substring(pathName.indexOf('/'))}
             </h5>
@@ -113,7 +115,7 @@ export default class DocumentsExplorer extends Component {
                <td>-</td>
                <td>{this.formatBytes(document.size)}</td>
                <td>{document.type === 'f' &&
-                 <a href={'/apoffice/files/' + pathName + document.name}>
+                 <a href={`/${mountingPoint}/files/${pathName}${document.name}`}>
                    <i className={"fa fa-download"}/>
                  </a>
                }</td>

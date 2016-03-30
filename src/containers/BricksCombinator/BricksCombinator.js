@@ -3,6 +3,7 @@ import dateformat from 'dateformat';
 import React, {Component, PropTypes} from 'react';
 import slugify from 'slugify';
 
+import config from '../../config';
 import {BricksCombinatorForm} from 'components';
 import * as slidesActions from 'redux/modules/slides';
 import {fields} from '../../components/BricksCombinatorForm/BricksCombinatorForm';
@@ -58,7 +59,7 @@ export default class BricksCombinator extends Component {
   handleSubmit = (data) => {
     const transformedData = this.transformFormData(data);
     this.props.merge(transformedData);
-    this.props.setDownloadUrl(`/apoffice/files/${transformedData.outputPath}`);
+    this.props.setDownloadUrl(`/${config.apiEndPoints.apoffice}/files/${transformedData.outputPath}`);
   }
 
   render() {

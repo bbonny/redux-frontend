@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {reduxForm} from 'redux-form';
 
-import {BricksSelector, DownloadButton, PresentationConfigurator} from 'components';
+import {BricksSelector, DownloadButton, GenerateButton, PresentationConfigurator} from 'components';
 
 export const fields = [
   'configurator.clientName',
@@ -23,10 +23,11 @@ class BricksCombinatorForm extends Component {
     fields: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     mergeInProgress: PropTypes.bool,
+    mergeError: PropTypes.bool,
     readyToDownload: PropTypes.bool,
     downloadUrl: PropTypes.string,
     slideSlices: PropTypes.array,
-    mergeError: PropTypes.string,
+    mode: PropTypes.string,
   }
 
   componentWillMount() {
@@ -51,6 +52,7 @@ class BricksCombinatorForm extends Component {
       readyToDownload,
       downloadUrl,
       mergeError,
+      mode,
     } = this.props;
 
     return (
@@ -63,11 +65,11 @@ class BricksCombinatorForm extends Component {
           <div className="col-sm-3 col-xs-12">
             <div className="row">
               <div className="col-sm-12 col-xs-12">
-                <button className={'btn btn-success col-sm-12 col-xs-12'} onClick={handleSubmit}>
-                  <i
-                    className={'fa fa-refresh' + (mergeInProgress ? ' fa-spin' : '')}
-                  /> Generate
-                </button>
+                <GenerateButton
+                  handleSubmit={handleSubmit}
+                  mergeInProgress={mergeInProgress}
+                  mode={mode}
+                />
               </div>
             </div>
             <div className="row">

@@ -22,9 +22,13 @@ module.exports = Object.assign({
     apoffice: '80',
     bricksApi: '80',
   },
+  apiEndPoints: {
+    apoffice: 'apoffice',
+  },
   app: {
     title: 'BRICKS',
     description: 'A pptx presentation in the blink of an eye !',
+    azureStorageMountingPoint: 'demo/',
     head: {
       titleTemplate: 'Bricks: %s',
       meta: [

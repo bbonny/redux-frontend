@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {connect} from 'react-redux';
+import config from '../../config';
 import Helmet from 'react-helmet';
 import { LinkContainer } from 'react-router-bootstrap';
 
@@ -52,10 +53,10 @@ export default class AdminPage extends Component {
             <BricksCombinator />
           }
           {this.props.pathname === '/admin/edit' &&
-            <h1>Edition is comming soon</h1>
+            <h5>Edition</h5>
           }
           {this.props.pathname === '/admin/documents' &&
-            <DocumentsExplorer />
+            <DocumentsExplorer mountingPoint={config.app.azureStorageMountingPoint}/>
           }
         </div>
       </div>

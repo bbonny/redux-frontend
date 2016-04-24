@@ -42,7 +42,7 @@ app.use('/api', (req, res) => {
 });
 
 // Proxy to apoffice API server
-app.use('/apoffice', (req, res) => {
+app.use(`/${config.apiEndPoints.apoffice}`, (req, res) => {
   const url = apofficeUrl + req.url;
   req.pipe(request(url)).pipe(res);
 });

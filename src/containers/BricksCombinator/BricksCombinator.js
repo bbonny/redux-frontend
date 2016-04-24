@@ -3,6 +3,7 @@ import dateformat from 'dateformat';
 import React, {Component, PropTypes} from 'react';
 import slugify from 'slugify';
 
+import config from '../../config';
 import {BricksCombinatorForm} from 'components';
 import * as slidesActions from 'redux/modules/slides';
 import {fields} from '../../components/BricksCombinatorForm/BricksCombinatorForm';
@@ -34,7 +35,7 @@ export default class BricksCombinator extends Component {
     readyToShow: PropTypes.bool,
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getBricks();
   }
 
@@ -58,7 +59,7 @@ export default class BricksCombinator extends Component {
   handleSubmit = (data) => {
     const transformedData = this.transformFormData(data);
     this.props.merge(transformedData);
-    this.props.setDownloadUrl(`/apoffice/files/${transformedData.outputPath}`);
+    this.props.setDownloadUrl(`/${config.apiEndPoints.apoffice}/files/${transformedData.outputPath}`);
   }
 
   render() {
@@ -68,10 +69,14 @@ export default class BricksCombinator extends Component {
         downloadUrl,
         bricks,
         readyToShow,
-        mergeError
+        mergeError,
+        loading,
     } = this.props;
     return (
       <div className="combinator-container">
+        {loading && !readyToShow &&
+          <div><br/><i className={'fa fa-refresh fa-spin'}/></div>
+        }
         {readyToShow &&
           <BricksCombinatorForm
             fields={fields}
